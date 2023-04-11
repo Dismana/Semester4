@@ -64,23 +64,20 @@ public class FireSpread : MonoBehaviour
         int rand = Random.Range(minTime, maxTime);
         yield return new WaitForSeconds(rand);
 
-        //Check for collision
-        //KODE HER
-
         //Spread fire
         switch (dir)
         {
             case Dir.N:
-                Instantiate(prefab, new Vector3(gameObject.transform.position.x + distance, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+                SpawnFire(prefab, new Vector3(gameObject.transform.position.x + distance, gameObject.transform.position.y, gameObject.transform.position.z));
                 break;
             case Dir.E:
-                Instantiate(prefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + distance), Quaternion.identity);
+                SpawnFire(prefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + distance));
                 break;
             case Dir.S:
-                Instantiate(prefab, new Vector3(gameObject.transform.position.x - distance, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+                SpawnFire(prefab, new Vector3(gameObject.transform.position.x - distance, gameObject.transform.position.y, gameObject.transform.position.z));
                 break;
             case Dir.W:
-                Instantiate(prefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - distance), Quaternion.identity);
+                SpawnFire(prefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - distance));
                 break;
             default:
                 Debug.Log("No Direction was chosen");
@@ -90,5 +87,22 @@ public class FireSpread : MonoBehaviour
         //Fire has spread and is no longer spreading
         fireSpreading = false;
         yield return null;
+    }
+
+    void SpawnFire(GameObject prefab, Vector3 spawnPoint)
+    {
+        //Checks for colliders at the spawnpoint
+        var hitColliders = Physics.OverlapSphere(spawnPoint, 0.01f);
+
+        //Checks for collision, if none is present then spawns fire
+        if(hitColliders.Length > 0.01)
+        {
+            Debug.Log("Spawn " + spawnPoint.x + ", " + spawnPoint.y + ", " + spawnPoint.z + " Occupied.");
+        } else
+        {
+            Debug.Log("Fire Spawned at " + spawnPoint.x + ", " + spawnPoint.y + ", " + spawnPoint.z);
+            Instantiate(prefab, spawnPoint, Quaternion.identity);
+        }
+        
     }
 }
