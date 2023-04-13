@@ -13,6 +13,8 @@ public class FireSpread : MonoBehaviour
     private bool fireSpreading;
 
     //Variables to modify the fire behavior
+    public Vector3 minBoundaries;
+    public Vector3 maxBoundaries;
     public int minTime;
     public int maxTime;
     public float distance;
@@ -68,8 +70,8 @@ public class FireSpread : MonoBehaviour
         switch (dir)
         {
             case Dir.N:
-                SpawnFire(prefab, new Vector3(gameObject.transform.position.x + distance, gameObject.transform.position.y, gameObject.transform.position.z));
-                break;
+                    SpawnFire(prefab, new Vector3(gameObject.transform.position.x + distance, gameObject.transform.position.y, gameObject.transform.position.z));
+                    break;
             case Dir.E:
                 SpawnFire(prefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + distance));
                 break;
@@ -91,18 +93,23 @@ public class FireSpread : MonoBehaviour
 
     void SpawnFire(GameObject prefab, Vector3 spawnPoint)
     {
-        //Checks for colliders at the spawnpoint
-        var hitColliders = Physics.OverlapSphere(spawnPoint, 0.01f);
+        if (minBoundaries.x > spawnPoint.x || maxBoundaries.x < spawnPoint.x || minBoundaries.y > spawnPoint.y || maxBoundaries.y < spawnPoint.y || minBoundaries.z > spawnPoint.z || maxBoundaries.z < spawnPoint.z)
+        {
+            Debug.Log("Spawn failed, Out of Bounds");
+        } else {
+            //Checks for colliders at the spawnpoint
+            var hitColliders = Physics.OverlapSphere(spawnPoint, 0.01f);
 
-        //Checks for collision, if none is present then spawns fire
-        if(hitColliders.Length > 0.01)
-        {
-            Debug.Log("Spawn " + spawnPoint.x + ", " + spawnPoint.y + ", " + spawnPoint.z + " Occupied.");
-        } else
-        {
-            Debug.Log("Fire Spawned at " + spawnPoint.x + ", " + spawnPoint.y + ", " + spawnPoint.z);
-            Instantiate(prefab, spawnPoint, Quaternion.identity);
+            //Checks for collision, if none is present then spawns fire
+            if (hitColliders.Length > 0.01)
+            {
+                Debug.Log("Spawn " + spawnPoint.x + ", " + spawnPoint.y + ", " + spawnPoint.z + " Occupied.");
+            }
+            else
+            {
+                Debug.Log("Fire Spawned at " + spawnPoint.x + ", " + spawnPoint.y + ", " + spawnPoint.z);
+                Instantiate(prefab, spawnPoint, Quaternion.identity);
+            }
         }
-        
     }
 }
