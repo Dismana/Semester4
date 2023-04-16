@@ -70,8 +70,8 @@ public class FireSpread : MonoBehaviour
         switch (dir)
         {
             case Dir.N:
-                    SpawnFire(prefab, new Vector3(gameObject.transform.position.x + distance, gameObject.transform.position.y, gameObject.transform.position.z));
-                    break;
+                 SpawnFire(prefab, new Vector3(gameObject.transform.position.x + distance, gameObject.transform.position.y, gameObject.transform.position.z));
+                 break;
             case Dir.E:
                 SpawnFire(prefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + distance));
                 break;
@@ -93,6 +93,7 @@ public class FireSpread : MonoBehaviour
 
     void SpawnFire(GameObject prefab, Vector3 spawnPoint)
     {
+        //Checks if fire is within boundaries
         if (minBoundaries.x > spawnPoint.x || maxBoundaries.x < spawnPoint.x || minBoundaries.y > spawnPoint.y || maxBoundaries.y < spawnPoint.y || minBoundaries.z > spawnPoint.z || maxBoundaries.z < spawnPoint.z)
         {
             Debug.Log("Spawn failed, Out of Bounds");

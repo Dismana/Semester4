@@ -997,6 +997,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2829262743403241215, guid: 3bb0d6b5a631c914fbd962de8f675708,
+        type: 3}
+      propertyPath: maxBoundaries.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829262743403241215, guid: 3bb0d6b5a631c914fbd962de8f675708,
+        type: 3}
+      propertyPath: maxBoundaries.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829262743403241215, guid: 3bb0d6b5a631c914fbd962de8f675708,
+        type: 3}
+      propertyPath: maxBoundaries.z
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829262743403241215, guid: 3bb0d6b5a631c914fbd962de8f675708,
+        type: 3}
+      propertyPath: minBoundaries.x
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829262743403241215, guid: 3bb0d6b5a631c914fbd962de8f675708,
+        type: 3}
+      propertyPath: minBoundaries.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829262743403241215, guid: 3bb0d6b5a631c914fbd962de8f675708,
+        type: 3}
+      propertyPath: minBoundaries.z
+      value: -0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 6876272599884106630, guid: 3bb0d6b5a631c914fbd962de8f675708,
         type: 3}
       propertyPath: m_RootOrder
@@ -1056,6 +1086,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446962130883450766, guid: 3bb0d6b5a631c914fbd962de8f675708,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bb0d6b5a631c914fbd962de8f675708, type: 3}
