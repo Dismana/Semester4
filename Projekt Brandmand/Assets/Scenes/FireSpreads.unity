@@ -1027,6 +1027,11 @@ PrefabInstance:
       propertyPath: minBoundaries.z
       value: -0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 6524237529371107492, guid: 3bb0d6b5a631c914fbd962de8f675708,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 6876272599884106630, guid: 3bb0d6b5a631c914fbd962de8f675708,
         type: 3}
       propertyPath: m_RootOrder
