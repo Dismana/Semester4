@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
+using Unity.XR.CoreUtils;
 
 public class ContinuousMovement : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class ContinuousMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Quaternion headYaw = Quaternion.Euler(x: 0, rig.cameraGameObject.transform.eulerAngles.y, z: 0); 
+        Quaternion headYaw = Quaternion.Euler(x: 0, rig.Camera.transform.eulerAngles.y, z: 0); 
         Vector3 direction = headYaw * new Vector3(inputAxis.x, y: 0, inputAxis.y);
         character.Move(direction * speed * Time.deltaTime);
     }
